@@ -1,0 +1,22 @@
+#greeting_elem {
+  position: relative;
+  /*background: green;*/
+  text-align: center;
+  font-size: 50px;
+}
+
+#parent_elem {
+  /*background: red;*/
+  position: absolute;
+  width: 800px;
+  height: 500px;
+  top: 25%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -50px;
+}
+
+#google_button {
+  margin-left: 330px;
+  margin-top: 150px;
+}

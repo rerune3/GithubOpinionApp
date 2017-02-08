@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="templates/home/home.css">
+
+    <script src='templates/home/home_callback.js'> </script>
+    <script src='templates/home/home_handler.js'> </script>
+    <script src='templates/home/home.js'> </script>
+    <script src='templates/define.js'> </script>
+    <script src='templates/helper.js'> </script>
+
+    <title>Title</title>
+  </head>
+
+  <body>
+
+    <div id='modal_window'>
+      <div id='opinion_form'>
+          <div id='opinion_input_wrapper'>
+            <textarea id='opinion_input'
+                  placeholder='What are your thoughts?'
+                  maxlength='200'></textarea>
+          </div>
+
+          <div id='tags_input_wrapper'>
+            <input id='tags_input' placeholder='Tags'/>
+          </div>
+
+          <div id='post_button_wrapper'>
+            <button id='post_button' value='submit'>Post!</button>
+          </div>
+      </div>
+
+      <div id='opinion_comment_view'>
+
+        <div id='opinion_view'>
+          <div id='view_post_author'> <b> Posted by: </b> User </div>
+          <div id='view_post_text'> This is my post. </div>
+          <div id='view_post_date'> <b> Posted at: </b> Time </div>
+          <div id='view_post_buttons'>
+            <button id='view_like_button'> Like </button>
+            <button id='view_dislike_button'> Dislike </button>
+          </div>
+        </div>
+
+        <div id='comment_view'>
+          <div id='view_comment_author'> <b> Posted by: </b> User </div>
+          <div id='view_comment_text'> This is my comment. </div>
+          <div id='view_comment_date'> <b> Posted at: </b> Time </div>
+          <div id='view_comment_buttons'>
+            <button id='view_like_button'> Like </button>
+            <button id='view_dislike_button'> Dislike </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id='top_panel'>
+      Top Panel
+    </div>
+    <br>
+    <div id='panel_container'>
+
+      <div id='trending_panel'>
+        <div id='trending_post'>
+          <!-- <h2> <b> Trending... </b> </h1>  -->
+        </div>
+
+      </div>
+
+      <div id='stream_panel'>
+
+        <div id='ask_question_post'>
+          Post an opinion!
+        </div>
+
+        <div class='opinion_post'>
+          <div class='post_author'> <b> Posted by: </b> Chuck Onwuzuruike </div>
+          <div class='post_text'> This is my post. </div>
+          <div class='post_date'> <b> Posted at: </b> 3:30pm on 1/23/2016 </div>
+          <div class='post_buttons'>
+            <button class='like_button'> Like </button>
+            <button class='dislike_button'> Dislike </button>
+            <button class='view_button'> View </button>
+          </div>
+        </div>
+
+      </div>
+
+     <div id='user_panel'>
+       <div id='user_info'>
+         <img id='user_pic'> <img>
+       </div>
+     </div>
+
+    </div> <!-- End Div -->
+
+  </body>
+</html>
