@@ -91,7 +91,7 @@ body {
   position: absolute;
   font-size: 80%;
   top: 3%;
-  right: 3%;
+  right: 10%;
 }
 
 .post_buttons {
@@ -111,7 +111,7 @@ body {
 
 .post_date {
   position: absolute;
-  right: 10px;
+  right: 10%;
   bottom: 5%;
   font-size: 80%;
 }
@@ -167,35 +167,39 @@ body {
 /*Opinion Comment View style*/
 #opinion_comment_view {
   background-color: green;
-  position: absolute;
-  margin-top: 5%;
-  margin-left: 10.5%;
-  width: 80%;
-  height: 1000px;
-  display: none;
+  width: 75%;
+  height: 100%;
+  margin-left: 12.5%;
+  overflow: auto;
 }
 
-#opinion_view {
+.opinion_view {
   background-color: red;
-  position: relative;
-  width: 70%;
-  height: 50%;
-  top: 9%;
-  left: 15%;
+  width: 85%;
+  height: 35%;
+  margin-top: 8%;
+  margin-left: 8%;
+  margin-bottom: 2%;
 }
 
-#view_post_author {
-  font-size: 40px;
-  /*margin-right: 90%;*/
+.view_post_author {
+  position: absolute;
+  font-size: 120%;
+  margin-left: 70%;
 }
 
-#comment_view {
-  background-color: orange;
-  position: relative;
-  margin-top: 15%;
-  width: 65%;
+.view_post_date {
+  font-size: 120%;
+  margin-left: 70%;
+  margin-top: 10%;
+}
+
+.comment_view {
+  background-color: white;
+  width: 85%;
   height: 25%;
-  left: 17%;
+  margin-left: 8%;
+  margin-bottom: 2%;
 }
 
 /*Modal window stlye*/
