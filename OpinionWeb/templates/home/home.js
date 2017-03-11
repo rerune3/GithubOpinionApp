@@ -7,12 +7,15 @@ window.onload = function() {
   //   console.log("yo");
   // }, JSON.stringify(request));
   home.setupListeners();
-  // homeHandler.retrieveOpinionList();
+  homeHandler.retrieveOpinionList();
 };
 
 home.setupListeners = function() {
-  var elem = document.getElementById("post_button");
-  elem.addEventListener("click", homeCallback.postButtonCallback);
+  var elem = document.getElementById("opinion_post_button");
+  elem.addEventListener("click", homeCallback.postOpinionButtonCallback);
+
+  var elem = document.getElementById("comment_post_button");
+  elem.addEventListener("click", homeCallback.postCommentButtonCallback);
 
   elem = document.getElementById("ask_question_post");
   elem.addEventListener("click", homeCallback.askQuestionPostCallback);

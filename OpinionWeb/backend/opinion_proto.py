@@ -18,10 +18,10 @@ class Opinion(messages.Message):
     timestamp_sec = messages.IntegerField(6, required=True)
     opinion_id = messages.StringField(7, required=True)
 
-class OpinionList(messages.Message):
+class OpinionListResponse(messages.Message):
     opinion_list = messages.MessageField(Opinion, 1, repeated=True)
 
-class CommentList(messages.Message):
+class CommentListResponse(messages.Message):
     comment_list = messages.MessageField(OpinionComment, 1, repeated=True)
 
 class OpinionListRequest(messages.Message):
@@ -43,6 +43,7 @@ class RequestFeedback(messages.Message):
     # Should be set using AppErrors.
     status = messages.IntegerField(1, required=True)
     error_message = messages.StringField(2, required=True)
+    unique_id = messages.StringField(3, required=False)
 
 class OpinionBundle(messages.Message):
     opinion = messages.MessageField(Opinion, 1, required=False)

@@ -3,7 +3,10 @@
   <head>
 
     <link rel="stylesheet" type="text/css" href="templates/home/home.css">
+    <link rel="stylesheet" type="text/css" href="templates/home/opinion_comment_view_style.css">
+    <link rel="stylesheet" type="text/css" href="templates/home/opinion_post_style.css">
 
+    <script src='templates/home/home_helper.js'> </script>
     <script src='templates/home/home_callback.js'> </script>
     <script src='templates/home/home_handler.js'> </script>
     <script src='templates/home/home.js'> </script>
@@ -11,11 +14,13 @@
     <script src='templates/helper.js'> </script>
 
     <title>Title</title>
+
   </head>
 
   <body>
 
     <div id='modal_window'>
+
       <div id='opinion_form'>
           <div id='opinion_input_wrapper'>
             <textarea id='opinion_input'
@@ -28,38 +33,52 @@
           </div>
 
           <div id='post_button_wrapper'>
-            <button id='post_button' value='submit'>Post!</button>
+            <button id='opinion_post_button' value='submit'>Post!</button>
           </div>
       </div>
 
       <div id='opinion_comment_view'>
 
-        <div class='opinion_view'>
-          <div class='view_post_author'> <b> Posted by: </b> User </div>
-          <div class='view_post_text'> This is my post. </div>
-          <div class='view_post_date'> <b> Posted at: </b> Time </div>
+        <div id='opinion_view' style='display:none'>
+          <div class='view_post_author'></div>
+          <div class='view_post_text'></div>
+          <div class='view_post_date'></div>
           <div class='view_post_buttons'>
             <button class='view_like_button'> Like </button>
             <button class='view_dislike_button'> Dislike </button>
           </div>
         </div>
 
-        <div class='comment_view'>
-          <div class='view_comment_author'> <b> Posted by: </b> User </div>
-          <div class='view_comment_text'> This is my comment. </div>
-          <div class='view_comment_date'> <b> Posted at: </b> Time </div>
+        <div class='comment_view' style='display:none'>
+          <div class='view_comment_author'></div>
+          <div class='view_comment_text'></div>
+          <div class='view_comment_date'></div>
           <div class='view_comment_buttons'>
             <button class='view_like_button'> Like </button>
             <button class='view_dislike_button'> Dislike </button>
           </div>
         </div>
 
+        <div id='comment_form'>
+            <div id='comment_input_wrapper'>
+              <textarea id='comment_input'
+                    placeholder='Reply...'
+                    maxlength='300'></textarea>
+            </div>
+
+            <div id='comment_button_wrapper'>
+              <button id='comment_post_button' value='submit'>Post!</button>
+            </div>
+        </div>
+
       </div>
+
     </div>
 
     <div id='top_panel'>
       Top Panel
     </div>
+
     <br>
     <div id='panel_container'>
 
@@ -76,10 +95,10 @@
           Post an opinion!
         </div>
 
-        <div class='opinion_post'>
-          <div class='post_author'> <b> Posted by: </b> Chuck Onwuzuruike </div>
-          <div class='post_text'> This is my post. </div>
-          <div class='post_date'> <b> Posted at: </b> 3:30pm on 1/23/2016 </div>
+        <div class='opinion_post' style='display:none;'>
+          <div class='post_author'></div>
+          <div class='post_text'></div>
+          <div class='post_date'></div>
           <div class='post_buttons'>
             <button class='like_button'> Like </button>
             <button class='dislike_button'> Dislike </button>
@@ -96,6 +115,10 @@
      </div>
 
     </div> <!-- End Div -->
+
+    <div id='message_box'>
+      <div id='message_box_text'></div>
+    </div>
 
   </body>
 </html>

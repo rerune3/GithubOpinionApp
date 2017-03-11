@@ -2,6 +2,25 @@ body {
   background-color: grey;
 }
 
+#message_box {
+  background-color: rgba(255, 255, 100, .5);
+  display: none;
+  position: fixed;
+  width: 50%;
+  height: 20%;
+  right: 25%;
+  bottom: 20px;
+  z-index: 2;
+}
+
+#message_box_text {
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  font-weight: bolder;
+  font-size: 22px;
+}
+
 #panel_container {
   /*background: yellow;*/
   display: table;
@@ -73,61 +92,6 @@ body {
   cursor: pointer;
 }
 
-.opinion_post {
-  background: white;
-  position: relative;
-  display: block;
-  width: 95%;
-  height: 20%;
-  margin-left: 2.5%;
-  /*margin-top: 2%;*/
-  margin-bottom: 2%;
-  font-size: 20px;
-  box-shadow: 3px 3px grey;
-  z-index: 0;
-}
-
-.post_author {
-  position: absolute;
-  font-size: 80%;
-  top: 3%;
-  right: 10%;
-}
-
-.post_buttons {
-  /*background-color: grey;*/
-  position: absolute;
-  bottom: 5%;
-  left: 3%;
-  width: 50%;
-}
-
-.post_text {
-  position: absolute;
-  left: 3%;
-  top: 20%;
-  cursor: pointer;
-}
-
-.post_date {
-  position: absolute;
-  right: 10%;
-  bottom: 5%;
-  font-size: 80%;
-}
-
-.like_button {
-  margin-right: 2%;
-}
-
-.dislike_button {
-  margin-right: 2%;
-}
-
-.view_button {
-  /*margin-left: 5%;*/
-}
-
 /*Question form style.*/
 
 #opinion_form {
@@ -155,51 +119,13 @@ body {
   margin-left: 10%;
 }
 
-#post_button {
+#opinion_post_button {
   width: 20%;
   height: 30px;
   font-size: 20px;
   margin-top: 2%;
   margin-left: 38%;
   margin-bottom: 3%;
-}
-
-/*Opinion Comment View style*/
-#opinion_comment_view {
-  background-color: green;
-  width: 75%;
-  height: 100%;
-  margin-left: 12.5%;
-  overflow: auto;
-}
-
-.opinion_view {
-  background-color: red;
-  width: 85%;
-  height: 35%;
-  margin-top: 8%;
-  margin-left: 8%;
-  margin-bottom: 2%;
-}
-
-.view_post_author {
-  position: absolute;
-  font-size: 120%;
-  margin-left: 70%;
-}
-
-.view_post_date {
-  font-size: 120%;
-  margin-left: 70%;
-  margin-top: 10%;
-}
-
-.comment_view {
-  background-color: white;
-  width: 85%;
-  height: 25%;
-  margin-left: 8%;
-  margin-bottom: 2%;
 }
 
 /*Modal window stlye*/

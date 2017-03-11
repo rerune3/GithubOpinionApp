@@ -27,10 +27,10 @@ class RequestHandler(object):
         return RequestHandler.send_post_request(url, opinion)
 
     @staticmethod
-    def handle_insert_new_comment():
+    def handle_insert_new_comment(comment):
         url = ('http://localhost:8080'
                 '/_ah/api/opinions/v1/app.insert_new_comment?');
-        # return send_post_request_to_url(url, opinion)
+        return RequestHandler.send_post_request(url, comment)
 
     @staticmethod
     def handle_retrieve_opinion():
@@ -42,6 +42,12 @@ class RequestHandler(object):
         url = ('http://localhost:8080'
                 '/_ah/api/opinions/v1/app.retrieve_opinion_list?');
         return RequestHandler.send_get_request(url, opinion_list_request)
+
+    @staticmethod
+    def handle_retrieve_comment_list(comment_list_request):
+        url = ('http://localhost:8080'
+                '/_ah/api/opinions/v1/app.retrieve_comment_list?');
+        return RequestHandler.send_get_request(url, comment_list_request)
 
     @staticmethod
     def handle_delete_opinion():

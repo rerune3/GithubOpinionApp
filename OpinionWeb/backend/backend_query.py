@@ -31,7 +31,6 @@ class OpinionQuery(object):
     def get_comment_list(list_request):
         results = ndb.gql(('SELECT * FROM OpinionCommentModel '
                           'WHERE OpinionID = :1'), list_request.opinion_id)
-        print results
         return BackendHelper.comment_model_results_to_proto_list(results)
 
     @staticmethod

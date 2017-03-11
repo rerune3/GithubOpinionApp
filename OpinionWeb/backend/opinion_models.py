@@ -17,3 +17,9 @@ class OpinionModel(ndb.Model):
     Dislikes = ndb.IntegerProperty(required=False)
     OpinionTimestampSec = ndb.IntegerProperty(required=True)
     OpinionID = ndb.StringProperty(required=True)
+
+class TagsModel(ndb.Model):
+    TagID = ndb.StringProperty(required=True)
+    OpinionID = ndb.StringProperty(required=True)
+    # The last time the tag was created in a post or searched
+    TagTimestampSec = ndb.IntegerProperty(required=True)

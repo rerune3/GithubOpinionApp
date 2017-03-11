@@ -1,0 +1,53 @@
+.opinion_post {
+  background: white;
+  position: relative;
+  display: block;
+  width: 95%;
+  height: 20%;
+  margin-left: 2.5%;
+  margin-bottom: 2%;
+  font-size: 20px;
+  box-shadow: 3px 3px grey;
+  z-index: 0;
+}
+
+.post_author {
+  position: absolute;
+  font-size: 80%;
+  top: 3%;
+  left: 2%;
+}
+
+.post_buttons {
+  /*background-color: grey;*/
+  position: absolute;
+  bottom: 5%;
+  right: 3%;
+  width: 50%;
+}
+
+.post_text {
+  position: absolute;
+  left: 3%;
+  top: 20%;
+  cursor: pointer;
+}
+
+.post_date {
+  position: absolute;
+  left: 2%;
+  bottom: 5%;
+  font-size: 80%;
+}
+
+.like_button {
+  margin-right: 2%;
+}
+
+.dislike_button {
+  margin-right: 2%;
+}
+
+.view_button {
+  /*margin-left: 5%;*/
+}

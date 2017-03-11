@@ -11,7 +11,7 @@ from backend_query import OpinionQuery
 from opinion_models import OpinionModel
 from opinion_models import OpinionCommentModel
 
-from opinion_proto import CommentList
+from opinion_proto import CommentListResponse
 from opinion_proto import CommentListRequest
 from opinion_proto import CommentWorkRequest
 from opinion_proto import OpinionWorkRequest
@@ -19,10 +19,10 @@ from opinion_proto import OpinionListRequest
 from opinion_proto import OpinionBundle
 from opinion_proto import Opinion
 from opinion_proto import OpinionComment
-from opinion_proto import OpinionList
+from opinion_proto import OpinionListResponse
 from opinion_proto import RequestFeedback
 
-from uuid import uuid4
+import uuid
 
 @endpoints.api(name='opinions', version='v1', description='API for Opinions')
 class OpinionAPI(remote.Service):
@@ -32,7 +32,8 @@ class OpinionAPI(remote.Service):
                         path='app.insert_new_opinion',
                         http_method='POST')
     def insert_new_opinion(self, request):
-        if OpinionQuery.opinion_in_datastore(request.opinion_id):
+        unique_opinion_id = uuid.uuid4().hex
+        if OpinionQuery.opinion_in_datastore(unique_opinion_id):
             return RequestFeedback(status=AppErrors.ID_ALREADY_EXISTS,
                 error_message=('Opinion post with ID %s already exists. awk..')
                                 % (request.opinion_id))
@@ -41,11 +42,12 @@ class OpinionAPI(remote.Service):
                     Text=request.text, Likes=request.likes,
                     Dislikes=request.dislikes,
                     OpinionTimestampSec=request.timestamp_sec,
-                    OpinionID=request.opinion_id,
-                    id=request.opinion_id).put()
+                    OpinionID=unique_opinion_id,
+                    id=unique_opinion_id).put()
 
         return RequestFeedback(status=AppErrors.NO_ERRORS,
-                    error_message='Inserted successfully!')
+                    error_message='Inserted successfully!',
+                    unique_id=unique_opinion_id)
 
     @endpoints.method(OpinionComment, RequestFeedback,
                         name='insert_new_comment',
@@ -58,14 +60,16 @@ class OpinionAPI(remote.Service):
                 error_message=('Opinion post with ID %s does not exist.')
                                 % (request.opinion_id))
 
+        unique_comment_id = uuid.uuid4().hex
         OpinionCommentModel(Author=request.author, Text=request.text,
             Likes=request.likes, Dislikes=request.dislikes,
             CommentTimestampSec=request.timestamp_sec,
-            OpinionID=request.opinion_id, CommentID=request.comment_id,
-            id=request.comment_id).put()
+            OpinionID=request.opinion_id, CommentID=unique_comment_id,
+            id=unique_comment_id).put()
 
         return RequestFeedback(status=AppErrors.NO_ERRORS,
-                    error_message='Inserted successfully!')
+                    error_message='Inserted successfully!',
+                    unique_id=unique_comment_id)
 
     @endpoints.method(CommentWorkRequest, RequestFeedback,
                         name='delete_comment',
@@ -121,18 +125,20 @@ class OpinionAPI(remote.Service):
         opinion_proto = BackendHelper.opinion_model_to_proto(opinion)
         return OpinionBundle(opinion=opinion_proto, comments=comments_list)
 
-    @endpoints.method(OpinionListRequest, OpinionList,
+    @endpoints.method(OpinionListRequest, OpinionListResponse,
                         name='retrieve_opinion_list',
                         path='app.retrieve_opinion_list',
                         http_method='GET')
     def retrieve_opinion_list(self, request):
-        return OpinionList(opinion_list=OpinionQuery.get_opinion_list(request))
+        return OpinionListResponse(
+                        opinion_list=OpinionQuery.get_opinion_list(request))
 
-    @endpoints.method(CommentListRequest, CommentList,
+    @endpoints.method(CommentListRequest, CommentListResponse,
                         name='retrieve_comment_list',
                         path='app.retrieve_comment_list',
                         http_method='GET')
     def retrieve_comment_list(self, request):
-        return CommentList(comment_list=OpinionQuery.get_comment_list(request))
+        return CommentListResponse(
+                        comment_list=OpinionQuery.get_comment_list(request))
 
 application = endpoints.api_server([OpinionAPI])

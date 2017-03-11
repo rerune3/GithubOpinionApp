@@ -1,0 +1,87 @@
+/*Opinion Comment View style*/
+#opinion_comment_view {
+  /*background-color: green;*/
+  display:none;
+  position: relative;
+  width: 75%;
+  height: 100%;
+  margin-left: 12.5%;
+  overflow: auto;
+}
+
+#opinion_view {
+  background-color: #FFFFEE;
+  position: relative;
+  width: 85%;
+  height: 35%;
+  margin-left: 7%;
+  margin-top: 15%;
+  margin-bottom: 10%;
+}
+
+.view_post_author, .view_comment_author {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  font-size: 100%;
+}
+
+.view_post_date, .view_comment_date {
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  font-size: 100%;
+}
+
+.view_post_text, .view_comment_text {
+  position: absolute;
+  font-size: 120%;
+  left: 3%;
+  top: 20%;
+}
+
+.view_post_buttons, .view_comment_buttons {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+
+.comment_view, .live_comment {
+  background-color: white;
+  position: relative;
+  width: 85%;
+  height: 25%;
+  margin-left: 7%;
+  margin-top: 2%;
+}
+
+#comment_form {
+  /*background-color: white;*/
+  position: absolute;
+  width: 85%;
+  height: 20%;
+  left: 11%;
+  margin-top: 2%;
+  margin-bottom: 10%;
+}
+
+#comment_input {
+  position: absolute;
+  width: 85%;
+  height: 50%;
+  font-size: 100%;
+  resize: none;
+}
+
+#comment_button_wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 30%;
+  left: 16%;
+}
+
+#comment_post_button {
+  position: absolute;
+  width: 50%;
+  height: 30px;
+}

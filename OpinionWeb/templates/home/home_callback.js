@@ -1,8 +1,13 @@
-var homeCallback = {}
+var homeCallback = {};
 
-homeCallback.postButtonCallback = function() {
+homeCallback.postOpinionButtonCallback = function() {
   homeHandler.insertNewOpinion();
   location.reload();
+};
+
+homeCallback.postCommentButtonCallback = function() {
+  var opinion_id = document.getElementById("opinion_view").name;
+  homeHandler.insertNewComment(opinion_id);
 };
 
 homeCallback.askQuestionPostCallback = function() {
@@ -21,14 +26,22 @@ homeCallback.modalWindowCallback = function(event) {
     } // end for
     // Set modal element to hidden after.
     modal_elem.style.display = "none";
+    homeHelper.destroyComments();
   } // end if
 };
 
 homeCallback.viewButtonCallback = function(event) {
   var modal = document.getElementById("modal_window");
   var view_elem = document.getElementById("opinion_comment_view");
+  var opinion_element = event.target.parentNode.parentNode;
+  var opinion = homeHelper.extractOpinionHTMLInfoFromElement(opinion_element);
+
+  homeHelper.constructAndAppendOpinionViewToDOM(opinion.opinion_id);
+
   modal.style.display = "block";
   view_elem.style.display = "block";
+
+  homeHandler.retrieveCommentList(opinion);
 };
 
 homeCallback.httpPostAsyncCallback = function(response) {
@@ -62,30 +75,17 @@ homeCallback.retrieveOpinionCallback = function(response) {
 
 homeCallback.retrieveOpinionListCallback = function(response) {
   console.log("Retrieve opinion list callback.");
-  var stream_panel_elem = document.getElementById("stream_panel");
-  var base_post_elem = document.getElementsByClassName("opinion_post")[0];
-  var new_post_elem = null;
+  console.log(response);
+
   var response_object = JSON.parse(response);
+  homeHelper.constructAndAppendOpinionsToDOM(response_object.opinion_list);
+  homeHelper.hideMessageBox();
+};
 
-  for (var i = 0; i < response_object.opinion_list.length; i++) {
-    opinion = response_object.opinion_list[i];
-    new_post_elem = base_post_elem.cloneNode(true);
-    children = new_post_elem.children;
+homeCallback.retrieveCommentListCallback = function(response) {
+  console.log("Retrieve comment list callback.");
 
-    for (var j = 0; j < children.length; j++) {
-      child = children[j];
-      if (child.className === "post_author") {
-        child.innerHTML = "<b> Posted By: </b>" + opinion.author;
-      } else if (child.className === "post_text") {
-        child.innerText = opinion.text;
-      } else if (child.className === "post_date") {
-        date = new Date(opinion.timestamp_sec * 1000);
-        child.innerHTML = "<b> Posted on: </b>" + date.toLocaleString();
-      }
-    }
-
-    new_post_elem.id = opinion.opinion_id;
-    new_post_elem.style.display = "";
-    stream_panel_elem.appendChild(new_post_elem);
-  } // end for
+  var response_object = JSON.parse(response);
+  homeHelper.constructAndAppendCommentsToDOM(response_object.comment_list);
+  homeHelper.hideMessageBox();
 };
