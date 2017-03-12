@@ -1,30 +1,30 @@
-from opinion_proto import Opinion
-from opinion_proto import OpinionComment
+from proto import Post
+from proto import Comment
 
 class BackendHelper(object):
 
     @staticmethod
-    def opinion_model_to_proto(opinion_model):
-        return Opinion(author=opinion_model.Author,
-            tags=opinion_model.Tags, text=opinion_model.Text,
-            likes=opinion_model.Likes, dislikes=opinion_model.Dislikes,
-            timestamp_sec=opinion_model.OpinionTimestampSec,
-            opinion_id=opinion_model.OpinionID)
+    def post_model_to_proto(post_model):
+        return Post(author=post_model.Author,
+            tags=post_model.Tags, text=post_model.Text,
+            likes=post_model.Likes, dislikes=post_model.Dislikes,
+            timestamp_sec=post_model.PostTimestampSec,
+            post_id=post_model.PostID)
 
     @staticmethod
     def comment_model_to_proto(comment_model):
-        return OpinionComment(author=comment_model.Author,
+        return Comment(author=comment_model.Author,
             text=comment_model.Text, likes=comment_model.Likes,
             dislikes=comment_model.Dislikes,
             timestamp_sec=comment_model.CommentTimestampSec,
-            opinion_id=comment_model.OpinionID,
+            post_id=comment_model.PostID,
             comment_id=comment_model.CommentID)
 
     @staticmethod
-    def opinion_model_results_to_proto_list(opinion_model_results):
+    def post_model_results_to_proto_list(post_model_results):
         arr = []
-        for opinion in opinion_model_results:
-            arr.append(BackendHelper.opinion_model_to_proto(opinion))
+        for post in post_model_results:
+            arr.append(BackendHelper.post_model_to_proto(post))
         return arr
 
     @staticmethod

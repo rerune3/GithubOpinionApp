@@ -1,5 +1,5 @@
 /*Opinion Comment View style*/
-#opinion_comment_view {
+#post_comment_view {
   /*background-color: green;*/
   display:none;
   position: relative;
@@ -9,7 +9,7 @@
   overflow: auto;
 }
 
-#opinion_view {
+#post_view {
   background-color: #FFFFEE;
   position: relative;
   width: 85%;

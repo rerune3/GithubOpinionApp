@@ -1,18 +1,18 @@
 var homeCallback = {};
 
-homeCallback.postOpinionButtonCallback = function() {
-  homeHandler.insertNewOpinion();
+homeCallback.postPostButtonCallback = function() {
+  homeHandler.insertNewPost();
   location.reload();
 };
 
 homeCallback.postCommentButtonCallback = function() {
-  var opinion_id = document.getElementById("opinion_view").name;
-  homeHandler.insertNewComment(opinion_id);
+  var post_id = document.getElementById("post_view").name;
+  homeHandler.insertNewComment(post_id);
 };
 
 homeCallback.askQuestionPostCallback = function() {
   var modal_elem = document.getElementById("modal_window");
-  var form_elem = document.getElementById("opinion_form");
+  var form_elem = document.getElementById("post_form");
   modal_elem.style.display = "block";
   form_elem.style.display = "block";
 };
@@ -32,24 +32,24 @@ homeCallback.modalWindowCallback = function(event) {
 
 homeCallback.viewButtonCallback = function(event) {
   var modal = document.getElementById("modal_window");
-  var view_elem = document.getElementById("opinion_comment_view");
-  var opinion_element = event.target.parentNode.parentNode;
-  var opinion = homeHelper.extractOpinionHTMLInfoFromElement(opinion_element);
+  var view_elem = document.getElementById("post_comment_view");
+  var post_element = event.target.parentNode.parentNode;
+  var post = homeHelper.extractPostHTMLInfoFromElement(post_element);
 
-  homeHelper.constructAndAppendOpinionViewToDOM(opinion.opinion_id);
+  homeHelper.constructAndAppendPostViewToDOM(post.post_id);
 
   modal.style.display = "block";
   view_elem.style.display = "block";
 
-  homeHandler.retrieveCommentList(opinion);
+  homeHandler.retrieveCommentList(post);
 };
 
 homeCallback.httpPostAsyncCallback = function(response) {
   console.log("This shouldnt be a thing.");
 };
 
-homeCallback.insertNewOpinionCallback = function(response) {
-  console.log("Insert new opinion callback.");
+homeCallback.insertNewPostCallback = function(response) {
+  console.log("Insert new post callback.");
   console.log(response);
 };
 
@@ -63,22 +63,27 @@ homeCallback.deleteCommentCallback = function(response) {
   console.log(response);
 };
 
-homeCallback.deleteOpinionCallback = function(response) {
-  console.log("Delete opinion callback.");
+homeCallback.deletePostCallback = function(response) {
+  console.log("Delete post callback.");
   console.log(response);
 };
 
-homeCallback.retrieveOpinionCallback = function(response) {
-  console.log("Retrieve opinion callback.");
+homeCallback.retrievePostCallback = function(response) {
+  console.log("Retrieve post callback.");
   console.log(response);
 };
 
-homeCallback.retrieveOpinionListCallback = function(response) {
-  console.log("Retrieve opinion list callback.");
+homeCallback.retrievePostListCallback = function(response) {
+  console.log("Retrieve post list callback.");
   console.log(response);
 
   var response_object = JSON.parse(response);
-  homeHelper.constructAndAppendOpinionsToDOM(response_object.opinion_list);
+  if (!("post_list" in response_object)) {
+    homeHelper.showMessageBox("No Feeds to Show...");
+    return;
+  }
+
+  homeHelper.constructAndAppendPostsToDOM(response_object.post_list);
   homeHelper.hideMessageBox();
 };
 

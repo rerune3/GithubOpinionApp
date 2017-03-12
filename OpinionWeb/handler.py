@@ -4,7 +4,7 @@ import urllib2
 
 from google.appengine.api import urlfetch
 
-from backend.opinion_proto import Opinion
+from backend.proto import Post
 
 class RequestHandler(object):
 
@@ -21,40 +21,40 @@ class RequestHandler(object):
         return result.content
 
     @staticmethod
-    def handle_insert_new_opinion(opinion):
+    def handle_insert_new_post(post):
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.insert_new_opinion?');
-        return RequestHandler.send_post_request(url, opinion)
+                '/_ah/api/posts/v1/app.insert_new_post?');
+        return RequestHandler.send_post_request(url, post)
 
     @staticmethod
     def handle_insert_new_comment(comment):
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.insert_new_comment?');
+                '/_ah/api/posts/v1/app.insert_new_comment?');
         return RequestHandler.send_post_request(url, comment)
 
     @staticmethod
-    def handle_retrieve_opinion():
+    def handle_retrieve_post():
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.insert_new_comment?');
+                '/_ah/api/posts/v1/app.insert_new_comment?');
 
     @staticmethod
-    def handle_retrieve_opinion_list(opinion_list_request):
+    def handle_retrieve_post_list(post_list_request):
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.retrieve_opinion_list?');
-        return RequestHandler.send_get_request(url, opinion_list_request)
+                '/_ah/api/posts/v1/app.retrieve_post_list?');
+        return RequestHandler.send_get_request(url, post_list_request)
 
     @staticmethod
     def handle_retrieve_comment_list(comment_list_request):
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.retrieve_comment_list?');
+                '/_ah/api/posts/v1/app.retrieve_comment_list?');
         return RequestHandler.send_get_request(url, comment_list_request)
 
     @staticmethod
-    def handle_delete_opinion():
+    def handle_delete_post():
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.delete_opinion?');
+                '/_ah/api/posts/v1/app.delete_post?');
 
     @staticmethod
     def handle_delete_comment():
         url = ('http://localhost:8080'
-                '/_ah/api/opinions/v1/app.delete_comment?');
+                '/_ah/api/posts/v1/app.delete_comment?');

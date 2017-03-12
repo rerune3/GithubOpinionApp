@@ -7,12 +7,12 @@ window.onload = function() {
   //   console.log("yo");
   // }, JSON.stringify(request));
   home.setupListeners();
-  homeHandler.retrieveOpinionList();
+  homeHandler.retrievePostList();
 };
 
 home.setupListeners = function() {
-  var elem = document.getElementById("opinion_post_button");
-  elem.addEventListener("click", homeCallback.postOpinionButtonCallback);
+  var elem = document.getElementById("post_button");
+  elem.addEventListener("click", homeCallback.postPostButtonCallback);
 
   var elem = document.getElementById("comment_post_button");
   elem.addEventListener("click", homeCallback.postCommentButtonCallback);

@@ -1,7 +1,7 @@
 class AppErrors(object):
     NO_ERRORS = 0
     UNKNOWN_ERROR = 1
-    OPINION_DOES_NOT_EXIST = 2
+    POST_DOES_NOT_EXIST = 2
     COMMENT_DOES_NOT_EXIST = 3
     # This is a pretty fatal error, tbh...
     USER_DOES_NOT_EXIST = 4

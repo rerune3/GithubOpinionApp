@@ -29,14 +29,14 @@ class HomePage(webapp2.RequestHandler):
     def get(self):
         json_string = self.request.get('request_type')
         request = json.loads(json_string) if json_string else ''
-        if request == 'RETRIEVE_OPINION':
+        if request == 'RETRIEVE_POST':
             response = RequestHandler.handle_insert_new_comment()
             self.response.write(response)
-        elif request == 'RETRIEVE_OPINION_LIST':
-            request_json = self.request.get('opinion_list_request')
-            opinion_list_request = json.loads(request_json)
-            response = RequestHandler.handle_retrieve_opinion_list(
-                                                        opinion_list_request)
+        elif request == 'RETRIEVE_POST_LIST':
+            request_json = self.request.get('post_list_request')
+            post_list_request = json.loads(request_json)
+            response = RequestHandler.handle_retrieve_post_list(
+                                                        post_list_request)
             self.response.write(response)
         elif request == 'RETRIEVE_COMMENT_LIST':
             request_json = self.request.get('comment_list_request')
@@ -59,15 +59,15 @@ class HomePage(webapp2.RequestHandler):
 
     def post(self):
         request = json.loads(self.request.get('request_type'))
-        if request == 'INSERT_NEW_OPINION':
-            opinion = json.loads(self.request.get('opinion'))
-            response = RequestHandler.handle_insert_new_opinion(opinion)
+        if request == 'INSERT_NEW_POST':
+            post = json.loads(self.request.get('post'))
+            response = RequestHandler.handle_insert_new_post(post)
             self.response.write(response)
         elif request == 'INSERT_NEW_COMMENT':
             comment = json.loads(self.request.get('comment'))
             response = RequestHandler.handle_insert_new_comment(comment)
             self.response.write(response)
-        elif request == 'DELETE_OPINION':
+        elif request == 'DELETE_POST':
             response = RequestHandler.handle_insert_new_comment()
             self.response.write(response)
         elif request == 'DELETE_COMMENT':

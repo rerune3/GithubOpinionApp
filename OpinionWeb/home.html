@@ -3,8 +3,8 @@
   <head>
 
     <link rel="stylesheet" type="text/css" href="templates/home/home.css">
-    <link rel="stylesheet" type="text/css" href="templates/home/opinion_comment_view_style.css">
-    <link rel="stylesheet" type="text/css" href="templates/home/opinion_post_style.css">
+    <link rel="stylesheet" type="text/css" href="templates/home/post_comment_view_style.css">
+    <link rel="stylesheet" type="text/css" href="templates/home/post_style.css">
 
     <script src='templates/home/home_helper.js'> </script>
     <script src='templates/home/home_callback.js'> </script>
@@ -21,9 +21,9 @@
 
     <div id='modal_window'>
 
-      <div id='opinion_form'>
-          <div id='opinion_input_wrapper'>
-            <textarea id='opinion_input'
+      <div id='post_form'>
+          <div id='post_input_wrapper'>
+            <textarea id='post_input'
                   placeholder='What are your thoughts?'
                   maxlength='200'></textarea>
           </div>
@@ -33,13 +33,13 @@
           </div>
 
           <div id='post_button_wrapper'>
-            <button id='opinion_post_button' value='submit'>Post!</button>
+            <button id='post_button' value='submit'>Post!</button>
           </div>
       </div>
 
-      <div id='opinion_comment_view'>
+      <div id='post_comment_view'>
 
-        <div id='opinion_view' style='display:none'>
+        <div id='post_view' style='display:none'>
           <div class='view_post_author'></div>
           <div class='view_post_text'></div>
           <div class='view_post_date'></div>
@@ -92,10 +92,10 @@
       <div id='stream_panel'>
 
         <div id='ask_question_post'>
-          Post an opinion!
+          Post an post!
         </div>
 
-        <div class='opinion_post' style='display:none;'>
+        <div class='post' style='display:none;'>
           <div class='post_author'></div>
           <div class='post_text'></div>
           <div class='post_date'></div>

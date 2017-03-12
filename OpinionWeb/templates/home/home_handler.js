@@ -1,38 +1,38 @@
 var homeHandler = {};
 
-homeHandler.insertNewOpinion = function() {
-  var opinionInputElement = document.getElementById("opinion_input");
+homeHandler.insertNewPost = function() {
+  var postInputElement = document.getElementById("post_input");
   var tagsInputWrapperElement = document.getElementById("tags_input_wrapper");
 
   var author = "SomeUser";
 
-  if (opinionInputElement.value === "")
+  if (postInputElement.value === "")
     return;
 
-  var opinionObj = {
+  var postObj = {
     author: author,
-    text: opinionInputElement.value + "",
-    opinion_id: "",
+    text: postInputElement.value + "",
+    post_id: "",
     timestamp_sec: parseInt(Date.now() / 1000, 10)
   };
 
-  var data = JSON.stringify(opinionObj);
-  var requestType = JSON.stringify(define.request_types.INSERT_NEW_OPINION);
+  var data = JSON.stringify(postObj);
+  var requestType = JSON.stringify(define.request_types.INSERT_NEW_POST);
 
   var requestPackage = {
     'request_type': requestType,
-    'opinion': data
+    'post': data
   };
 
   var params = helper.constructURLParams(requestPackage);
   var url = window.location.origin + '/home?' + params;
 
-  helper.httpPostAsync(url, homeCallback.insertNewOpinionCallback, null);
+  helper.httpPostAsync(url, homeCallback.insertNewPostCallback, null);
 
-  opinionInputElement.value = "";
+  postInputElement.value = "";
 };
 
-homeHandler.insertNewComment = function(opinionID) {
+homeHandler.insertNewComment = function(postID) {
   var commentInputElement = document.getElementById("comment_input");
   var author = "SomeCommenter";
 
@@ -43,7 +43,7 @@ homeHandler.insertNewComment = function(opinionID) {
     author: author,
     text: commentInputElement.value + "",
     comment_id: "",
-    opinion_id: opinionID,
+    post_id: postID,
     timestamp_sec: parseInt(Date.now() / 1000, 10)
   };
 
@@ -63,7 +63,7 @@ homeHandler.insertNewComment = function(opinionID) {
   commentInputElement.value = "";
 };
 
-homeHandler.deleteOpinion = function() {
+homeHandler.deletePost = function() {
 
 };
 
@@ -71,34 +71,34 @@ homeHandler.deleteComment = function() {
 
 };
 
-homeHandler.retrieveOpinion = function() {
+homeHandler.retrievePost = function() {
 
 };
 
-homeHandler.retrieveOpinionList = function() {
-  var opinionListRequest = {
+homeHandler.retrievePostList = function() {
+  var postListRequest = {
     size: 50,
     tags: [],
   };
 
-  var data = JSON.stringify(opinionListRequest);
-  var requestType = JSON.stringify(define.request_types.RETRIEVE_OPINION_LIST);
+  var data = JSON.stringify(postListRequest);
+  var requestType = JSON.stringify(define.request_types.RETRIEVE_POST_LIST);
 
   var requestPackage = {
     'request_type': requestType,
-    'opinion_list_request': data
+    'post_list_request': data
   };
 
   var params = helper.constructURLParams(requestPackage);
   var url = window.location.origin + '/home?' + params;
 
   homeHelper.showMessageBox("Loading Feed...");
-  helper.httpGetAsync(url, homeCallback.retrieveOpinionListCallback, null);
+  helper.httpGetAsync(url, homeCallback.retrievePostListCallback, null);
 };
 
-homeHandler.retrieveCommentList = function(opinion) {
+homeHandler.retrieveCommentList = function(post) {
   var commentListRequest = {
-    opinion_id: opinion.opinion_id,
+    post_id: post.post_id,
     size: 50
   };
 
